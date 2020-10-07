@@ -1,6 +1,7 @@
 package com.example.dagger.hilt.di.module
 
 import com.example.dagger.hilt.di.qualifier.HttpClientForApi
+import com.example.dagger.hilt.di.qualifier.HttpClientForOtherSite
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,8 +18,15 @@ object NetworkModule {
     // https://developer.android.com/training/dependency-injection/hilt-android
     @HttpClientForApi
     @Provides
-    fun provideOkHttpClient(
-    ): OkHttpClient = OkHttpClient.Builder()
+    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
+        .connectTimeout(1, TimeUnit.MINUTES)
+        .readTimeout(1, TimeUnit.MINUTES)
+        .writeTimeout(1, TimeUnit.MINUTES)
+        .build()
+
+    @HttpClientForOtherSite
+    @Provides
+    fun provideOkHttpClient2(): OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(1, TimeUnit.MINUTES)
         .readTimeout(1, TimeUnit.MINUTES)
         .writeTimeout(1, TimeUnit.MINUTES)

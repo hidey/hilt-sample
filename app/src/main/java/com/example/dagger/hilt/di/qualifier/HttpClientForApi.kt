@@ -5,3 +5,7 @@ import javax.inject.Qualifier
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
 annotation class HttpClientForApi
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class HttpClientForOtherSite
