@@ -38,6 +38,8 @@ kapt {
 }
 
 dependencies {
+    val activity_version = "1.1.0"
+    val lifecycle_version = "2.2.0"
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}")
     implementation("androidx.core:core-ktx:1.3.2")
     implementation("androidx.appcompat:appcompat:1.2.0")
@@ -46,6 +48,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.2.0")
 
+    implementation ("androidx.activity:activity-ktx:$activity_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version")
+    kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
     implementation("com.squareup.okhttp3:okhttp:4.9.0")
 
     // hilt
